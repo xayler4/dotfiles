@@ -5,14 +5,8 @@ CACHE="cache/"
 
 #declaration of directories path relative to ${HOME}/.config/ and associated commands
 #note: do not specify final directory forward slash
-declare -a DIR_NAMES=("nvim" "i3")
-declare -a COMMANDS=("nvim --headless +PlugInstall +PlugClean! +qall" "i3-msg restart")
-
-#declaration of directories path relative to ${HOME}/ and associated files and commands
-#note: do not specify final directory forward slash
-declare -a HOME_CONFIGS=("urxvt")
-declare -a HOME_FILES=(".Xresources")
-declare -a HOME_COMMANDS=("xrdb ${HOME}/.Xresources")
+declare -a DIR_NAMES=("nvim" "ranger" "kitty" "polybar" "i3" )
+declare -a COMMANDS=("eval nvim --headless +PlugInstall +PlugClean! +qall!; cp -r ${CACHE}nvim/plugged/nvim-treesitter/parser/ ${TARGET}nvim/plugged/nvim-treesitter/" "" "kill -SIGUSR1 $KITTY_PID" "chmod +x ${TARGET}polybar/launch.sh" "i3-msg restart")
 
 #setup target and cache dirs if not already existing
 mkdir -p "${TARGET}"
@@ -38,20 +32,4 @@ do
 	echo "EXECUTED (${COMMANDS[i]})"
 	echo "CONFIG APPLIED (${DIR_NAMES[i]})"
 	echo ""
-done
-
-#home config
-for i in ${!HOME_CONFIGS[@]}
-do
-	echo "APPLYING ${HOME_CONFIGS[i]} CONFIG..."
-	mkdir -p "${CACHE}${HOME_CONFIGS[i]}/"
-	cp "${HOME}/${HOME_FILES[i]}" "${CACHE}${HOME_CONFIGS[i]}/"
-	echo "${HOME}/${HOME_FILES[i]} COPIED TO ${CACHE}${HOME_CONFIGS[i]}/"
-	cp "${HOME_CONFIGS[i]}/${HOME_FILES[i]}" "${HOME}/"
-	echo "${HOME_CONFIGS[i]}/${HOME_FILES[i]} COPIED TO ${HOME}/"
-	echo "EXECUTING ${HOME_COMMANDS[i]}"
-	${HOME_COMMANDS[i]}
-	echo ""
-	echo "EXECUTED (${HOME_COMMANDS[i]})"
-	echo "CONFIG APPLIED (${HOME_CONFIGS[i]})"
 done
