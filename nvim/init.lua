@@ -9,11 +9,12 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'stevearc/oil.nvim'
-Plug 'bkad/CamelCaseMotion'
+Plug 'chrisgrieser/nvim-spider'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'gbprod/substitute.nvim'
+Plug 'folke/flash.nvim'
 Plug('Shougo/deoplete.nvim', {['do'] = ':UpdateRemotePlugins'})
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
@@ -58,11 +59,20 @@ require 'telescope'.setup {
 	}
 }
 
+require 'flash'.setup {
+	modes = {
+		search = {
+			enabled = true
+		}
+	}
+}
+
 require 'substitute'.setup()
 
 require 'oil'.setup()
 
 -- general preferences
+vim.opt.termguicolors = true
 vim.cmd('colorscheme evergarden')
 
 vim.opt.number = true
@@ -71,14 +81,9 @@ vim.opt.shiftwidth = 4
 vim.opt.clipboard = 'unnamedplus'
 
 -- keybindings
-vim.keymap.set('n', '<C-J>', '<C-W>j')
-vim.keymap.set('n', '<C-k>', '<C-W>k')
-vim.keymap.set('n', '<C-l>', '<C-W>l')
-vim.keymap.set('n', '<C-h>', '<C-W>h')
-
 local telescope_builtin = require 'telescope.builtin'
-vim.keymap.set('n', '<C-f>', telescope_builtin.find_files, {})
-vim.keymap.set('n', '<C-b>', telescope_builtin.buffers, {})
+vim.keymap.set('n', '<space>f', telescope_builtin.find_files, {})
+vim.keymap.set('n', '<space>b', telescope_builtin.buffers, {})
 
 local substitute = require 'substitute'
 vim.keymap.set('n', 's', substitute.operator)
@@ -91,5 +96,29 @@ vim.keymap.set('n', 'sx', exchange.operator)
 vim.keymap.set('n', 'sxx', exchange.line)
 vim.keymap.set('x', 'X', exchange.visual)
 vim.keymap.set('n', 'sxc', exchange.cancel)
+
+vim.keymap.set(
+	{ "n", "o", "x" },
+	"<leader>w",
+	"<cmd>lua require('spider').motion('w')<CR>",
+	{ desc = "Spider-w" }
+)
+vim.keymap.set(
+	{ "n", "o", "x" },
+	"<leader>e",
+	"<cmd>lua require('spider').motion('e')<CR>",
+	{ desc = "Spider-e" }
+)
+vim.keymap.set(
+	{ "n", "o", "x" },
+	"<leader>b",
+	"<cmd>lua require('spider').motion('b')<CR>",
+	{ desc = "Spider-b" }
+)
+
+vim.keymap.set('i', '(', '()<left>')
+vim.keymap.set('i', '[', '[]<left>')
+vim.keymap.set('i', '{', '{}<left>')
+vim.keymap.set('i', '<C-<>', '<><left>')
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
