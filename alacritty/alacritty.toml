@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/evergarden-hard.toml"]
+import = ["~/.config/alacritty/monokai-spectrum.toml"]
 live_config_reload = true
 
 [env]
@@ -7,7 +7,7 @@ TERM = "xterm-256color"
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.80
+opacity = 0.85
 
 [window.padding]
 x = 5
@@ -31,3 +31,8 @@ style = "Italic"
 [font.normal]
 family = "FantasqueSansM Nerd Font"
 style = "Regular"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Control"
+action = "SpawnNewInstance"

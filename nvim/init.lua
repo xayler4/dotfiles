@@ -4,8 +4,8 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'comfysage/evergarden'
-Plug 'nvim-lualine/lualine.nvim'
+Plug 'loctvl842/monokai-pro.nvim'
+Plug 'itchyny/lightline.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'stevearc/oil.nvim'
@@ -28,26 +28,11 @@ require 'nvim-web-devicons'.setup {
 	default = false
 }
 
-require 'evergarden'.setup {
-  transparent_background = true,
-  contrast_dark = 'hard', -- 'hard'|'medium'|'soft'
-  override_terminal = true,
-  style = {
-    tabline = { reverse = true, color = 'green' },
-    search = { reverse = false, inc_reverse = true },
-    types = { italic = true },
-    keyword = { italic = true },
-    comment = { italic = false },
-    sign = { highlight = false },
-  },
-  overrides = { }, -- add custom overrides
-}
+require 'monokai-pro'.setup ({
+	transparent_background = true,
+	filter = 'spectrum'
+})
 
-require 'lualine'.setup {
-	options = {
-		theme = 'evergarden'
-	}
-}
 
 require 'telescope'.setup {
 	defaults = {
@@ -73,7 +58,11 @@ require 'oil'.setup()
 
 -- general preferences
 vim.opt.termguicolors = true
-vim.cmd('colorscheme evergarden')
+vim.opt.background = 'dark'
+vim.g.lightline = {
+	colorscheme = 'monokaipro'
+}
+vim.cmd('colorscheme monokai-pro')
 
 vim.opt.number = true
 vim.opt.tabstop = 4
@@ -122,3 +111,13 @@ vim.keymap.set('i', '{', '{}<left>')
 vim.keymap.set('i', '<C-<>', '<><left>')
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+vim.cmd([[
+	autocmd FileType TelescopePrompt call deoplete#custom#buffer_option(auto_complete, v:false)
+]])
+
+vim.cmd([[
+	call serverstart(tempname())
+	let &titlestring="nvim %F -- [" . v:servername . "]"
+	set title
+]])
