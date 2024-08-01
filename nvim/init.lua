@@ -113,7 +113,7 @@ vim.keymap.set('i', '<C-<>', '<><left>')
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 vim.cmd([[
-	autocmd FileType TelescopePrompt call deoplete#custom#buffer_option(auto_complete, v:false)
+	autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 ]])
 
 vim.cmd([[
