@@ -15,6 +15,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'gbprod/substitute.nvim'
 Plug 'folke/flash.nvim'
+Plug 'myusuf3/numbers.vim'
+
 Plug('Shougo/deoplete.nvim', {['do'] = ':UpdateRemotePlugins'})
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
