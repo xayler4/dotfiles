@@ -42,6 +42,11 @@ require 'telescope'.setup {
 			i = {
 				['<esc>'] = require('telescope.actions').close
 			}
+		},
+		pickers = {
+			find_files = {
+				hidden = true
+			}
 		}
 	}
 }
@@ -54,9 +59,14 @@ require 'flash'.setup {
 	}
 }
 
-require 'substitute'.setup()
 
-require 'oil'.setup()
+require 'oil'.setup ({
+	view_options = {
+		show_hidden = true
+	}
+})
+
+require 'substitute'.setup()
 
 -- general preferences
 vim.opt.termguicolors = true
@@ -70,6 +80,7 @@ vim.opt.number = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.clipboard = 'unnamedplus'
+vim.opt.swapfile = false
 
 -- keybindings
 local telescope_builtin = require 'telescope.builtin'
