@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/monokai-spectrum.toml"]
+import = ["~/.config/alacritty/nord.toml"]
 live_config_reload = true
 
 [shell]
@@ -10,7 +10,7 @@ TERM = "xterm-256color"
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.95
+opacity = 0.85
 
 [window.padding]
 x = 5

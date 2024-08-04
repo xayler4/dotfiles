@@ -4,8 +4,8 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'loctvl842/monokai-pro.nvim'
-Plug 'itchyny/lightline.vim'
+Plug 'shaunsingh/nord.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'stevearc/oil.nvim'
@@ -25,16 +25,16 @@ vim.call('plug#end')
 -- plugins options
 vim.call('deoplete#enable')
 
+require('lualine').setup {
+    options = {
+		theme = 'nord'
+    }
+}
+
 require 'nvim-web-devicons'.setup {
 	color_icons = true,
 	default = false
 }
-
-require 'monokai-pro'.setup ({
-	transparent_background = true,
-	filter = 'spectrum'
-})
-
 
 require 'telescope'.setup {
 	defaults = {
@@ -68,13 +68,14 @@ require 'oil'.setup ({
 
 require 'substitute'.setup()
 
+vim.g.nord_disable_background = true
+
+require('nord').set()
+
 -- general preferences
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
-vim.g.lightline = {
-	colorscheme = 'monokaipro'
-}
-vim.cmd('colorscheme monokai-pro')
+vim.cmd[[colorscheme nord]]
 
 vim.opt.number = true
 vim.opt.tabstop = 4
