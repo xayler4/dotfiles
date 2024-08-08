@@ -7,7 +7,6 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'shaunsingh/nord.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'stevearc/oil.nvim'
 Plug 'chrisgrieser/nvim-spider'
 Plug 'tpope/vim-surround'
@@ -17,6 +16,8 @@ Plug 'gbprod/substitute.nvim'
 Plug 'folke/flash.nvim'
 Plug 'myusuf3/numbers.vim'
 
+Plug('nvim-telescope/telescope.nvim', {['branch'] = '0.1.x'})
+Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' })
 Plug('Shougo/deoplete.nvim', {['do'] = ':UpdateRemotePlugins'})
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
