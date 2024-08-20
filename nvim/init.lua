@@ -15,6 +15,7 @@ Plug 'tpope/vim-commentary'
 Plug 'gbprod/substitute.nvim'
 Plug 'folke/flash.nvim'
 Plug 'myusuf3/numbers.vim'
+Plug 'jbyuki/quickmath.nvim'
 
 Plug('nvim-telescope/telescope.nvim', {['branch'] = '0.1.x'})
 Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' })

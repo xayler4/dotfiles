@@ -209,7 +209,7 @@ set $bgcolor    #5E81AC
 set $in-bgcolor #2E3440
 set $text       #F0E4CF
 set $u-bgcolor  #E24E44
-set $indicator  #69676C
+set $indicator  #E24E44
 set $in-text    #B6B6B6
 #                       border          background      text            indicator
 client.focused          $bgcolor        $bgcolor        $text           $indicator
@@ -217,7 +217,7 @@ client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgco
 client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
 client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
 
-default_border pixel 1
+default_border pixel 3
 default_floating_border pixel 1
 
 gaps inner 4
