@@ -1,5 +1,5 @@
 function fish_greeting
-	fortune | cowsay -f kitten 
+	# fortune | cowsay -f kitten 
 	echo
 end
 
