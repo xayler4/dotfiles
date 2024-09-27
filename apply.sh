@@ -5,8 +5,8 @@ CACHE="cache/"
 
 #declaration of directories path relative to ${HOME}/.config/ and associated commands
 #note: do not specify final directory forward slash
-declare -a DIR_NAMES=("picom" "nvim" "ranger" "alacritty" "polybar" "i3" "fish")
-declare -a COMMANDS=("" "eval nvim --headless +PlugInstall +PlugClean! +qall!; cp -r ${CACHE}nvim/plugged/nvim-treesitter/parser/ ${TARGET}nvim/plugged/nvim-treesitter/" "" "" "chmod +x ${TARGET}polybar/launch.sh" "i3-msg restart" "source ~/.config/fish/**/*.fish")
+declare -a DIR_NAMES=("picom" "nvim" "ranger" "alacritty" "polybar" "i3" "fish" "gtk-3.0")
+declare -a COMMANDS=("" "eval nvim --headless +PlugInstall +PlugClean! +qall!; cp -r ${CACHE}nvim/plugged/nvim-treesitter/parser/ ${TARGET}nvim/plugged/nvim-treesitter/" "" "" "chmod +x ${TARGET}polybar/launch.sh" "i3-msg restart" "source ~/.config/fish/**/*.fish" "" )
 
 #setup target and cache dirs if not already existing
 mkdir -p "${TARGET}"
@@ -26,10 +26,20 @@ do
 	echo "${TARGET}${DIR_NAMES[i]}/ DELETED"
 	cp -r "${DIR_NAMES[i]}/" "${TARGET}"
 	echo "${DIR_NAMES[i]}/ COPIED TO ${TARGET}"
-	echo "EXECUTING ${COMMANDS[i]}"
-	${COMMANDS[i]}
-	echo ""
-	echo "EXECUTED (${COMMANDS[i]})"
+	if [ "${COMMANDS[i]}" != "" ]; then
+		echo "EXECUTING ${COMMANDS[i]}"
+		${COMMANDS[i]}
+		echo ""
+		echo "EXECUTED (${COMMANDS[i]})"
+	fi
 	echo "CONFIG APPLIED (${DIR_NAMES[i]})"
 	echo ""
 done
+
+GTK2=".gtkrc-2.0"
+echo "APPLYING ${GTK2} CONFIG..."
+cp "${HOME}/${GTK2}" "${CACHE}"
+echo "${HOME}/${GTK2} COPIED TO ${CACHE}"
+cp ${GTK2} ${HOME}/
+echo "${GTK2} COPIED TO ${HOME}"
+echo "CONFIG APPLIED (${GTK2})"
