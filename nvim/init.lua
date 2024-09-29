@@ -124,10 +124,9 @@ vim.keymap.set(
 vim.keymap.set('i', '(', '()<left>')
 vim.keymap.set('i', '[', '[]<left>')
 vim.keymap.set('i', '{', '{}<left>')
-vim.keymap.set('i', '<', '<><left>')
 vim.keymap.set('i', '\"', '\"\"<left>')
 vim.keymap.set('i', '\'', '\'\'<left>')
-vim.keymap.set('i', '<C-<>', '<')
+vim.keymap.set('i', '<C-<>', '<><left>')
 vim.keymap.set('i', '<C-S-2>', '\"')
 vim.keymap.set('i', '<C-\'>', '\'')
 
