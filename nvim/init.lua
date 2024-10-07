@@ -84,6 +84,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.swapfile = false
+vim.opt.mps = vim.opt.mps + '<:>'
 
 -- keybindings
 local telescope_builtin = require 'telescope.builtin'
