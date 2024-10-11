@@ -201,26 +201,27 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Color shemes for windows 
-# set $bgcolor    #DB2033
-
-set $bgcolor    #3b4252
-set $in-bgcolor #2E3440
+set $bgcolor    #4c566a
+set $in-bgcolor #2e3440
+set $border  	#d8dee9
+set $in-border  #4c566a
 set $text       #eceff4
 set $u-bgcolor  #E24E44
 set $indicator  #E24E44
 set $in-text    #B6B6B6
 #                       border          background      text            indicator
-client.focused          $bgcolor        $bgcolor        $text           $indicator
-client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
+client.focused          $border        $bgcolor        $text           $indicator
+client.unfocused        $in-border     $in-bgcolor     $in-text        $in-bgcolor
+client.focused_inactive $in-border     $in-bgcolor     $in-text        $in-bgcolor
+client.urgent           $in-border      $u-bgcolor      $text           $u-bgcolor
 
 default_border pixel 0
 default_floating_border pixel 0
 
-gaps inner 6
+gaps inner 4
 gaps top 47
 gaps bottom 0
+
+title_align center
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR fish_color_login:magenta
+SETUVAR fish_color_login:cyan
 SETUVAR fish_color_git_status:blue
 SETUVAR fish_color_suffix:E24E44
 SETUVAR fish_color_cwd:white
